@@ -8,6 +8,8 @@ const undoButton = document.getElementById("undoButton");
 const counter = document.getElementById("counter");
 const counterContinue = document.getElementById("counterContinue");
 const sortButton = document.getElementById("sortButton");
+const searchInput = document.getElementById("searchInput");
+const searchigBottun = document.getElementById("searchigBottun");
 
 //זימון אירוע לחיצה על add
 addButton.addEventListener("click", addToDo);
@@ -101,10 +103,38 @@ function sortFnc() {
                 sortArr.push(containerArr[i]);
                 selectorView.removeChild(containerArr[i]);
             }
-
         }
     }
-    for (let x = sortArr.length-1; x >=0; x--) {
+    for (let x = sortArr.length - 1; x >= 0; x--) {
         selectorView.appendChild(sortArr[x]);
     }
 }
+
+
+
+//זימון פעולת החיפוש
+// searchigBottun.addEventListener("click", searchingFnc);
+
+searchInput.addEventListener("keypress", searchingFnc);
+searchInput.addEventListener("keyup", searchingFnc);
+
+function searchingFnc() {
+    let inputValue = searchInput.value;
+    let containerArr = selectorView.getElementsByClassName('todoContainer');
+    if (inputValue != "") {
+        for (let i = 0; i < containerArr.length; i++) {
+            if (containerArr[i].getElementsByClassName("todoText")[0].innerHTML.search(inputValue) === -1) {
+                containerArr[i].style.visibility = "hidden";
+            } else {
+                containerArr[i].style.visibility = "visible";
+            }
+        }
+    } else {
+        for (let i = 0; i < containerArr.length; i++) {
+            containerArr[i].style.visibility = "visible";
+        }
+    }
+
+}
+
+
