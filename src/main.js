@@ -1,3 +1,5 @@
+
+
 //הגדרות משתנים
 const addButton = document.getElementById("addButton");
 const textInput = document.getElementById("textInput");
@@ -10,6 +12,8 @@ const counterContinue = document.getElementById("counterContinue");
 const sortButton = document.getElementById("sortButton");
 const searchInput = document.getElementById("searchInput");
 const searchigBottun = document.getElementById("searchigBottun");
+const nameOfList = document.getElementById("nameOfList");
+const title = document.getElementById("title");
 
 //זימון אירוע לחיצה על add
 addButton.addEventListener("click", addToDo);
@@ -54,11 +58,12 @@ function addToDo() {
             deletedArr.push(todoContainer);
             selectorView.removeChild(todoContainer);
             counterFnc();
+            saveTasks();
         }
 
         counterFnc();
     } else {
-        window.alert("The text box is empty")
+        Swal.fire("The text box is empty")
     }
     textInput.focus();
     saveTasks();
@@ -156,9 +161,14 @@ function saveTasks() {
     }
     let JSONReadyArr = JSON.stringify(TasksOfarr);
     localStorage.setItem("tasks", JSONReadyArr);
+    localStorage.setItem("title", title.innerHTML);
 }
 
+//פעולה שמחזירה מידע שנשמר לדף בעת עלית הדף
 function init() {
+    if (localStorage.title) {
+        title.innerHTML = localStorage.getItem("title");
+    }
     if (localStorage.tasks) {
         let TasksOfarr = JSON.parse(localStorage.getItem("tasks"));
         for (let i = 0; i < TasksOfarr.length; i++) {
@@ -191,8 +201,34 @@ function init() {
                 selectorView.removeChild(todoContainer);
                 counterFnc();
             }
-
             counterFnc();
         }
     }
+}
+
+
+nameOfList.addEventListener("click", alertOfName);
+
+
+function alertOfName() {
+    swal({
+        title: "Change title list",
+        text: "Are You Sure?",
+        content: "input",
+        buttons: {
+            cancel: true,
+            confirm: "Submit"
+        }
+    }).then(val => {
+        if (val) {
+            swal({
+                title: "Thanks!",
+                text: "You typed: " + val,
+                icon: "success"
+            });
+            title.innerHTML = val;
+            saveTasks();
+        }
+    });
+
 }

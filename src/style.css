@@ -1,3 +1,134 @@
-div>*{
+
+
+/* div>*{
     display: inline;
+} */
+
+/* #home{
+    height: 100vh;
+    background-color: aqua;
+} */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
+
+#list {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+    grid-template-rows: 0.5fr 1fr 1fr 1fr 1fr;
+    gap: 0px 0px;
+    grid-template-areas: ". title title title title nameOfList" "control control control control control control" "performed performed performed view view view" "performed performed performed view view view" "performed performed performed view view view";
+    height: 100vh;
+    background-color: brown;
+}
+
+#title { 
+    grid-area: title; 
+    margin: auto;
+    font-size: 5rem;
+    font-family: 'Cinzel', serif;
+    text-shadow: 0 0 15px white;
+    text-decoration: underline;
+    
+}
+
+#nameOfList { 
+    grid-area: nameOfList; 
+    color: #ffffff;
+    background-color: transparent;
+    line-height: 120%;
+    border: 1px solid #ffffff;
+    padding: 10px 12px;
+    border-radius: 4px;
+    transition: background-color ease 400ms;
+}
+#nameOfList:hover {
+color: white;
+background-color: rgba(255, 255, 255, 0.3);
+} 
+
+#control { 
+    grid-area: control; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: green;
+}
+#textInput{
+    background-color: rgba(255, 255, 255, 0.3);
+    border: 1px solid #ffffff;
+    padding: 10px 12px;
+    border-radius: 10px;
+    color: white;
+    width: 100vw;
+    text-align: center;
+    font-size: 2em;
+}
+#textInput::placeholder{
+    color: red;
+    text-align: center;
+    text-transform: uppercase;
+    }
+#prioritySelector{
+    background-color: rgba(255, 255, 255, 0.3);
+    border: 1px solid #ffffff;
+    padding: 10px 12px;
+    border-radius: 10px;
+    color: white;
+    font-size: 2em;
+}
+
+    background-color: rgba(255, 255, 255, 0.3);
+    border: 1px solid #ffffff;
+    padding: 10px 12px;
+    border-radius: 10px;
+    color: white;
+    font-size: 2em;
+}
+#addButton{
+    background-color: rgba(255, 255, 255, 0.3);
+    font-size: 1em;
+    color: honeydew;
+    text-align: center;
+    border: 1px solid #ffffff;
+    padding: 10px 12px;
+    border-radius: 50%;
+    
+}
+
+#searchInput{
+    background-color: rgba(255, 255, 255, 0.3);
+    border: 1px solid #ffffff;
+    padding: 10px 12px;
+    border-radius: 10px;
+    color: white;
+    
+
+}
+#searchInput::placeholder{
+color: red;
+}
+
+
+#view { 
+    grid-area: view; 
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+
+.todoContainer{
+    display: flex;
+    justify-content: space-around;
+    background-color: greenyellow;
+    margin: 0.5rem;
+    border-radius: 10px;
+    padding: 1em;
+}
+#performed { 
+    grid-area: performed; 
+}
+

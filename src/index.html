@@ -6,34 +6,47 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 
 <body onload="init()">
-    <h1>ToDoList</h1>
-    <section id="control">
-        <h2 id="counter"></h2>
-        <h2 id=counterContinue></h2>
-        <input id="textInput" type="text">
-        <select id="prioritySelector">
-            <option value="1">1</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
-            <option value="4">4</option>
-            <option value="5">5</option>
-        </select>
-        <button id="addButton">Add</button>
-        <button id="undoButton">Undo</button>
-        <button id="sortButton">Sort</button>
-        <input id="searchInput" type="text" placeholder="search">
-    </section>
+    <div id="home">
+
+    </div>
+    
+    <div id="list">
+        <h1 id="title">ToDoList</h1>
+        <button id="nameOfList" style="font-size:24px">Button <i class="fa fa-pencil-square-o" aria-hidden="true"></i></button>
+        <section id="control">
+            <h2 id="counter"></h2>
+            <h2 id=counterContinue></h2>
+            <input id="textInput" type="text" placeholder="Type task here">
+            <select id="prioritySelector">
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+            </select>
+            <button id="addButton"><i class="fa fa-plus" aria-hidden="true"></i></button>
+            <button id="undoButton">Undo</button>
+            <button id="sortButton">Sort</button>
+            <input id="searchInput" type="text" placeholder="search">
+        </section>
 
 
-    <section id="view">
-    </section>
+        <section id="view">
+        </section>
 
+        <section id="Performed">
+        </section>
+    </div>
 
 
 </body>
 <script src="main.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 
 </html>

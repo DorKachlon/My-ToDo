@@ -20,5 +20,9 @@
     "@suvelocity/tester": "^1.0.2",
     "jest": "^26.0.1",
     "puppeteer": "^4.0.0"
+  },
+  "dependencies": {
+    "sweetalert": "^2.1.2",
+    "sweetalert2": "^9.17.0"
   }
 }
