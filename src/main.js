@@ -15,7 +15,8 @@ const searchigBottun = document.getElementById("searchigBottun");
 const nameOfList = document.getElementById("nameOfList");
 const title = document.getElementById("title");
 const selectorPerformed = document.getElementById("Performed");
-
+const imageBackground = document.getElementById("imageBackground");
+const areaOfList = document.getElementById("list");
 //זימון אירוע לחיצה על add
 addButton.addEventListener("click", addToDo);
 textInput.addEventListener("keyup", function (e) {
@@ -65,10 +66,22 @@ function addToDo() {
         checkBox.onclick = function () {
             if (checkBox.checked) {
                 selectorPerformed.appendChild(todoContainer);
+                deleteButton.onclick = function () {
+                    deletedArr.push(todoContainer);
+                    selectorPerformed.removeChild(todoContainer);
+                    counterFnc();
+                    saveTasks();
+                }
             } else {
                 selectorView.appendChild(todoContainer);
+                deleteButton.onclick = function () {
+                    deletedArr.push(todoContainer);
+                    selectorView.removeChild(todoContainer);
+                    counterFnc();
+                    saveTasks();
+                }
+                saveTasks();
             }
-            saveTasks();
         }
         counterFnc();
     } else {
@@ -185,6 +198,7 @@ function saveTasks() {
     let JSONReadyArrPerformed = JSON.stringify(PreformedOfarr);
     localStorage.setItem("Performed", JSONReadyArrPerformed);
     localStorage.setItem("title", title.innerHTML);
+    localStorage.setItem("image", areaOfList.style.backgroundImage);
 }
 
 //פעולה שמחזירה מידע שנשמר לדף בעת עלית הדף
@@ -203,6 +217,9 @@ function init() {
         for (let i = 0; i < TasksOfarr.length; i++) {
             createNewElemt(i, TasksOfarr, selectorPerformed);
         }
+    }
+    if (localStorage.image) {
+        areaOfList.style.backgroundImage = localStorage.getItem("image");
     }
 
 }
@@ -243,15 +260,26 @@ function createNewElemt(i, TasksOfarr, selector) {
         saveTasks();
     }
     checkBox.onclick = function () {
-        debugger;
         if (checkBox.checked) {
             selectorPerformed.appendChild(todoContainer);
+            deleteButton.onclick = function () {
+                deletedArr.push(todoContainer);
+                selectorPerformed.removeChild(todoContainer);
+                counterFnc();
+                saveTasks();
+            }
         } else {
             selectorView.appendChild(todoContainer);
+            deleteButton.onclick = function () {
+                deletedArr.push(todoContainer);
+                selectorView.removeChild(todoContainer);
+                counterFnc();
+                saveTasks();
+            }
+            saveTasks();
         }
-        saveTasks();
+        counterFnc();
     }
-    counterFnc();
 }
 
 //האירוע והפעולה להחלפת שם הרשימה
@@ -276,7 +304,6 @@ function alertOfName() {
             saveTasks();
         }
     });
-
 }
 
 //האירוע והפעולה למחיקת על המידע
@@ -297,11 +324,47 @@ function alertAndDelete() {
                 'Your file has been deleted.',
                 'success'
             )
-            deleteEverything();
+            setTimeout(deleteEverything, 2000);
+        } else {
+            Swal.fire(
+                'Cancelled',
+                'Your imaginary file is safe :)',
+                'error'
+            )
         }
     })
 }
 function deleteEverything() {
     localStorage.clear();
     location.reload();
+}
+
+
+//בלחיצה על כפתור זה יפתח הודעה וניתן לשנות תמונה
+imageBackground.addEventListener("click", background);
+function background() {
+    swal({
+        title: "Do you want to change the background?",
+        text: "Put a new url ;)",
+        content: "input",
+        buttons: {
+            cancel: true,
+            confirm: "Submit"
+        }
+    }).then(val => {
+        if (val) {
+            swal({
+                title: "Good luck!",
+                icon: "success"
+            });
+            areaOfList.style.backgroundImage = `url(${val})`;
+            saveTasks();
+        } else {
+            Swal.fire(
+                'Cancelled',
+                'Maybe next time :)',
+                'error'
+            )
+        }
+    });
 }

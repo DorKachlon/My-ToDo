@@ -39,6 +39,9 @@
     
 }
 #buttonTitle{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
     grid-area: nameOfList;
     margin: auto; 
 }
@@ -55,8 +58,23 @@
     padding: 10px 12px;
     border-radius: 4px;
     transition: background-color ease 400ms;
+    margin-bottom: 0.5em;
 }
 #nameOfList:hover {
+color: white;
+background-color: rgba(255, 255, 255, 0.3);
+} 
+#imageBackground { 
+    color: #ffffff;
+    background-color: transparent;
+    line-height: 120%;
+    border: 1px solid #ffffff;
+    padding: 10px 12px;
+    border-radius: 4px;
+    transition: background-color ease 400ms;
+    font-size: 1.2em;
+}
+#imageBackground:hover {
 color: white;
 background-color: rgba(255, 255, 255, 0.3);
 } 
@@ -105,13 +123,13 @@ background-color: rgba(255, 255, 255, 0.3);
 }
 #textInput{ 
     background-color: rgba(255, 255, 255, 0.7);
-    border: 1px solid #ffffff;
     padding: 10px 12px;
     border-radius: 10px;
     color: white;
     width: 100vw;
     text-align: center;
     font-size: 2em;
+    margin-right: 5px;
 }
 #textInput:hover {
     background-color: white;
@@ -129,11 +147,11 @@ background-color: rgba(255, 255, 255, 0.3);
 
 #prioritySelector{
     background-color: rgba(255, 255, 255, 0.7);
-    border: 1px solid #ffffff;
     padding: 10px 12px;
     border-radius: 10px;
     color: black;
     font-size: 2em;
+    margin-right: 5px;
 }
 #prioritySelector:hover {
     background-color: white;
@@ -143,7 +161,6 @@ background-color: rgba(255, 255, 255, 0.3);
     font-size: 1em;
     color: honeydew;
     text-align: center;
-    border: 1px solid #ffffff;
     padding: 1em 2em;
     border-radius: 50%;   
 }
@@ -166,7 +183,7 @@ background-color: rgba(255, 255, 255, 0.3);
     border: 1px solid #ffffff;
     padding: 10px 12px;
     border-radius: 50%;
-    
+    margin-right: 5px;
     
 }
 #undoButton:hover {
@@ -179,7 +196,8 @@ background-color: rgba(255, 255, 255, 0.3);
     text-align: center;
     border: 1px solid #ffffff;
     padding: 10px 12px;
-    border-radius: 50%;   
+    border-radius: 50%;  
+    margin-right: 5px; 
 }
 #sortButton:hover {
     background-color: rgba(255, 255, 255, 0.7);
@@ -269,6 +287,7 @@ input[type=checkbox]{
 
 }
 
-
-
-
+#Performed>div{
+    background-color: rgba(175, 175, 175, 0.78);
+    text-decoration: line-through;
+}
