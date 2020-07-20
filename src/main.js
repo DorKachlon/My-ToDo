@@ -86,6 +86,7 @@ function addToDo() {
                 counterFnc();
             }
         }
+        saveTasks();
         counterFnc();
     } else {
         Swal.fire("The text box is empty")
@@ -96,17 +97,19 @@ function addToDo() {
 
 //פעולה שמחזירה ערך שנמחק undo
 undoButton.addEventListener("click", function () {
-
-    const elemnt = deletedArr.pop();
-    const ckbox = elemnt.getElementsByClassName("checkBox");
-    if (ckbox[0].checked) {
-        selectorPerformed.appendChild(elemnt);
+    if (deletedArr.length != 0) {
+        const elemnt = deletedArr.pop();
+        const ckbox = elemnt.getElementsByClassName("checkBox");
+        if (ckbox[0].checked) {
+            selectorPerformed.appendChild(elemnt);
+        } else {
+            selectorView.appendChild(elemnt);
+        }
+        counterFnc();
+        saveTasks();
     } else {
-        selectorView.appendChild(elemnt);
+        Swal.fire("Nothing to do");
     }
-
-    counterFnc();
-    saveTasks();
 });
 
 
@@ -164,21 +167,25 @@ searchInput.addEventListener("keyup", searchingFnc);
 //פעולה שמחפשת ומשאירה רק את מה שחופש
 function searchingFnc() {
     let inputValue = searchInput.value;
-    let containerArr = selectorView.getElementsByClassName('todoContainer');
+    searchHelp(selectorView, inputValue);
+    searchHelp(selectorPerformed, inputValue);
+}
+function searchHelp(selector, inputValue) {
+    let containerArr = selector.getElementsByClassName('todoContainer');
     if (inputValue != "") {
         for (let i = 0; i < containerArr.length; i++) {
             if (containerArr[i].getElementsByClassName("todoText")[0].innerHTML.search(inputValue) === -1) {
-                containerArr[i].style.visibility = "hidden";
+                containerArr[i].style.opacity = "0.4";
             } else {
-                containerArr[i].style.visibility = "visible";
+                containerArr[i].style.opacity = "1";
             }
         }
     } else {
         for (let i = 0; i < containerArr.length; i++) {
-            containerArr[i].style.visibility = "visible";
+            containerArr[i].style.opacity = "1";
+
         }
     }
-
 }
 
 
@@ -268,7 +275,7 @@ function createNewElemt(i, TasksOfarr, selector) {
 
     deleteButton.onclick = function () {
         deletedArr.push(todoContainer);
-        selectorView.removeChild(todoContainer);
+        selector.removeChild(todoContainer);
         counterFnc();
         saveTasks();
     }
@@ -337,7 +344,7 @@ function alertAndDelete() {
                 'Your file has been deleted.',
                 'success'
             )
-            setTimeout(deleteEverything, 2000);
+            setTimeout(deleteEverything, 900);
         } else {
             Swal.fire(
                 'Cancelled',
@@ -381,3 +388,5 @@ function background() {
         }
     });
 }
+
+

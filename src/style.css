@@ -15,6 +15,9 @@
     box-sizing: border-box;
     font-family: 'Poppins', sans-serif;
 }
+*:focus {
+    outline: none;
+}
 
 #list {
     display: grid;
@@ -36,6 +39,9 @@
     text-decoration: underline;
     font-family: 'Raleway', sans-serif;
     margin-bottom: 0.5em;
+    background-color: rgba(190, 190, 190, 0.3);
+    padding: 0.2em;
+    border-radius: 0.5em;
     
 }
 #buttonTitle{
@@ -101,6 +107,7 @@ background-color: rgba(255, 255, 255, 0.3);
     grid-template-areas: ". text text text text text ." ". . . counter . . ."  ". . other other other . .";
     justify-content: center;
     align-items: center;
+    
 
 
 }
@@ -112,6 +119,7 @@ background-color: rgba(255, 255, 255, 0.3);
     text-shadow: 0 0 15px white;
     background-color: rgba(61, 182, 125, 0.712);
     border-radius: 5em;
+    width: 15em;
 }
 #counter{
     color: cornsilk;
@@ -123,10 +131,38 @@ background-color: rgba(255, 255, 255, 0.3);
 #one{
     grid-area: text;
     display: flex;
-    background-color: rgba(255, 255, 255, 0.3);
+    /* background-color: rgba(255, 255, 255, 0.3); */
     padding: 1em;
     border-radius: 5em;
+    animation-name: rainbow;
+    animation-duration: 10s;
+    animation-iteration-count: infinite;
+    animation-fill-mode: forwards;
+    
 }
+
+@keyframes rainbow{
+    0%{
+        background-color: rgba(122, 131, 255, 0.4);
+        
+    }
+    25%{
+        background-color: rgba(122, 255, 122, 0.4);
+    }
+    50%{
+        background-color: rgba(253, 255, 122, 0.4);
+    }
+    75%{
+        background-color: rgba(190, 190, 190, 0.4);
+    }
+    100%{
+        background-color: rgba(122, 131, 255, 0.4);
+    }
+
+}
+
+
+
 #textInput{ 
     background-color: rgba(255, 255, 255, 0.7);
     padding: 10px 12px;
@@ -136,6 +172,7 @@ background-color: rgba(255, 255, 255, 0.3);
     text-align: center;
     font-size: 2em;
     margin-right: 5px;
+    transition: all ease 400ms;
 }
 #textInput:hover {
     background-color: white;
@@ -158,6 +195,7 @@ background-color: rgba(255, 255, 255, 0.3);
     color: black;
     font-size: 2em;
     margin-right: 5px;
+    transition: all ease 400ms;
 }
 #prioritySelector:hover {
     background-color: white;
@@ -169,6 +207,7 @@ background-color: rgba(255, 255, 255, 0.3);
     text-align: center;
     padding: 1em 2em;
     border-radius: 50%;   
+    transition: all ease 400ms;
 }
 #addButton:hover {
     background-color: rgb(40, 229, 40);
@@ -193,6 +232,7 @@ background-color: rgba(255, 255, 255, 0.3);
     padding: 0.2em 1em;
     border-radius: 50%;
     margin-right: 5px;
+    transition: all ease 400ms;
     
 }
 #undoButton:hover {
@@ -208,6 +248,7 @@ background-color: rgba(255, 255, 255, 0.3);
     border-radius: 50%;  
     margin-right: 5px; 
     order: 1;
+    transition: all ease 400ms;
 }
 #sortButton:hover {
     background-color: rgba(255, 255, 255, 0.7);
@@ -221,6 +262,7 @@ background-color: rgba(255, 255, 255, 0.3);
     color: white;
     width: 40em;
     text-align: center;
+    transition: all ease 400ms;
 }
 #searchInput:hover {
     background-color: rgba(255, 255, 255, 0.7);
@@ -240,6 +282,7 @@ color: white;
     flex-direction: column;
     justify-content: flex-start;
 }
+
 #Performed { 
     grid-area: performed; 
     display: flex;
@@ -257,6 +300,7 @@ color: white;
     border-radius: 10px;
     padding: 1em;
     height: 3em;
+    transition: all ease 600ms;
 }
 .todoText{
     flex: 5;
@@ -272,6 +316,7 @@ color: white;
 .checkBox{
     flex: 0.1 0 1px;
     order: -1;
+    transition: all ease 400ms;
 
 }
 .deleteButton{
@@ -282,6 +327,7 @@ color: white;
     border-radius: 20%;
     color: red;
     flex: 0.2 0 3px;
+    transition: all ease 400ms;
 }
 .deleteButton:hover{
     background-color: rgba(236, 23, 23, 0.78);
@@ -294,6 +340,7 @@ input[type=checkbox]{
     transform: scale(3);
     border-radius: 50%;
     cursor: pointer;
+    transition: all ease 400ms;
 
 }
 
@@ -301,3 +348,15 @@ input[type=checkbox]{
     background-color: rgba(175, 175, 175, 0.78);
     text-decoration: line-through;
 }
+#view>div:hover{
+    background-color: rgba(255, 221, 128, 0.78);
+    transform: scale(1.003);
+    transition: all ease 800ms;
+}
+#Performed>div:hover{
+    background-color: rgba(107, 107, 107, 0.78);
+    text-decoration: line-through;
+    transform: scale(1.003);
+    transition: all ease 800ms;
+}
+
