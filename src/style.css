@@ -21,9 +21,9 @@
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
     grid-template-rows: 0.5fr 1fr 1fr 1fr 1fr;
     gap: 0px 0px;
-    grid-template-areas: ". title title title title nameOfList" "control control control control control control" "performed performed performed view view view" "performed performed performed view view view" "performed performed performed view view view";
+    grid-template-areas: "clear title title title title nameOfList" "control control control control control control" "performed performed performed view view view" "performed performed performed view view view" "performed performed performed view view view";
     height: 100vh;
-    background-image: url("https://images.pexels.com/photos/807598/pexels-photo-807598.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260");
+    background-image: url("https://images.wallpaperscraft.com/image/network_plexus_face_124428_3840x2400.jpg");
     background-size: cover;
 }
 
@@ -42,6 +42,11 @@
     grid-area: nameOfList;
     margin: auto; 
 }
+
+#buttonClear{
+    grid-area: clear;
+    margin: auto; 
+}
 #nameOfList { 
     color: #ffffff;
     background-color: transparent;
@@ -55,7 +60,19 @@
 color: white;
 background-color: rgba(255, 255, 255, 0.3);
 } 
-
+#clear { 
+    color: #ffffff;
+    background-color: transparent;
+    line-height: 120%;
+    border: 1px solid #ffffff;
+    padding: 10px 12px;
+    border-radius: 4px;
+    transition: background-color ease 400ms;
+}
+#clear:hover {
+color: white;
+background-color: rgba(255, 255, 255, 0.3);
+} 
 
 #control { 
     grid-area: control; 
@@ -195,6 +212,12 @@ color: white;
     flex-direction: column;
     justify-content: flex-start;
 }
+#Performed { 
+    grid-area: performed; 
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+}
 
 .todoContainer{
     display: flex;
@@ -246,8 +269,6 @@ input[type=checkbox]{
 
 }
 
-#performed { 
-    grid-area: performed; 
-}
+
 
 
