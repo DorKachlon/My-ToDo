@@ -14,6 +14,7 @@ const searchInput = document.getElementById("searchInput");
 const searchigBottun = document.getElementById("searchigBottun");
 const nameOfList = document.getElementById("nameOfList");
 const title = document.getElementById("title");
+const selectorPerformed = document.getElementById("Performed");
 
 //זימון אירוע לחיצה על add
 addButton.addEventListener("click", addToDo);
@@ -22,8 +23,6 @@ textInput.addEventListener("keyup", function (e) {
         addToDo();
     }
 });
-
-
 
 //פעולה שמוסיפה משימה לרשימה addToDo
 function addToDo() {
@@ -36,7 +35,6 @@ function addToDo() {
         const todoPriority = document.createElement("div"); //עדיפות מ-1 עד 5
         const deleteButton = document.createElement("button");
         const checkBox = document.createElement("input");
-
         todoContainer.className = "todoContainer";
         todoText.className = "todoText";
         todoCreatedAt.className = "todoCreatedAt";
@@ -48,7 +46,10 @@ function addToDo() {
         todoPriority.innerHTML = prioritySelector.value;
         let d = new Date();
         todoCreatedAt.innerHTML = `${d.getFullYear()}-${d.getMonth() + 1}-${d.getDate()} ${d.getHours()}:${d.getMinutes()}:${d.getSeconds()}`;
-        deleteButton.textContent = "Delete";
+        const deleteIcon = document.createElement("i");
+        deleteIcon.className = "fa fa-trash";
+        deleteIcon.setAttribute("aria-hidden", "true");
+        deleteButton.appendChild(deleteIcon);
         checkBox.setAttribute("type", "checkbox");
 
         todoContainer.append(todoText, todoCreatedAt, todoPriority, checkBox, deleteButton);
@@ -59,8 +60,18 @@ function addToDo() {
             selectorView.removeChild(todoContainer);
             counterFnc();
             saveTasks();
-        }
+        };
 
+        checkBox.onclick = function () {
+            if (checkBox.checked) {
+                selectorPerformed.appendChild(todoContainer);
+                selectorView.removeChild(todoContainer);
+            } else {
+
+                selectorView.appendChild(todoContainer);
+                selectorPerformed.removeChild(todoContainer);
+            }
+        };
         counterFnc();
     } else {
         Swal.fire("The text box is empty")
@@ -88,11 +99,11 @@ function counterFnc() {
     else if (divs === 1) {
         counter.innerHTML = divs;
         counter.style.visibility = "visible";
-        counterContinue.innerHTML = "task to do";
+        counterContinue.innerHTML = " task to do";
 
     } else {
         counter.innerHTML = divs;
-        counterContinue.innerHTML = "tasks to do";
+        counterContinue.innerHTML = " tasks to do";
     }
 }
 
@@ -149,6 +160,7 @@ function searchingFnc() {
 
 // שמירת מידע 
 function saveTasks() {
+    localStorage.clear();
     let divs = selectorView.getElementsByClassName('todoContainer');
     let TasksOfarr = [];
     for (let i = 0; i < divs.length; i++) {
@@ -189,7 +201,10 @@ function init() {
             todoText.innerHTML = TasksOfarr[i][0];
             todoCreatedAt.innerHTML = TasksOfarr[i][1];
             todoPriority.innerHTML = TasksOfarr[i][2];
-            deleteButton.textContent = "Delete";
+            const deleteIcon = document.createElement("i");
+            deleteIcon.className = "fa fa-trash";
+            deleteIcon.setAttribute("aria-hidden", "true");
+            deleteButton.appendChild(deleteIcon);
             checkBox.setAttribute("type", "checkbox");
             checkBox.checked = TasksOfarr[i][3];
 
@@ -232,3 +247,5 @@ function alertOfName() {
     });
 
 }
+
+
