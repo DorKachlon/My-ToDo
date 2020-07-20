@@ -72,6 +72,8 @@ function addToDo() {
                     counterFnc();
                     saveTasks();
                 }
+                counterFnc();
+                saveTasks();
             } else {
                 selectorView.appendChild(todoContainer);
                 deleteButton.onclick = function () {
@@ -81,6 +83,7 @@ function addToDo() {
                     saveTasks();
                 }
                 saveTasks();
+                counterFnc();
             }
         }
         counterFnc();
@@ -93,7 +96,15 @@ function addToDo() {
 
 //פעולה שמחזירה ערך שנמחק undo
 undoButton.addEventListener("click", function () {
-    selectorView.appendChild(deletedArr.pop());
+
+    const elemnt = deletedArr.pop();
+    const ckbox = elemnt.getElementsByClassName("checkBox");
+    if (ckbox[0].checked) {
+        selectorPerformed.appendChild(elemnt);
+    } else {
+        selectorView.appendChild(elemnt);
+    }
+
     counterFnc();
     saveTasks();
 });
@@ -126,15 +137,17 @@ sortButton.addEventListener("click", sortFnc);
 function sortFnc() {
     let containerArr = selectorView.getElementsByClassName('todoContainer');
     let sortArr = [];
-    for (let y = 1; y <= 5; y++) {
+    for (let y = 5; y >= 1; y--) {
         for (let i = 0; i < containerArr.length; i++) {
             if (y.toString() === containerArr[i].getElementsByClassName("todoPriority")[0].innerHTML) {
                 sortArr.push(containerArr[i]);
-                selectorView.removeChild(containerArr[i]);
             }
         }
     }
-    for (let x = sortArr.length - 1; x >= 0; x--) {
+    for (let i = 0; i < containerArr.length; i++) {
+        selectorView.removeChild(containerArr[i]);
+    }
+    for (let x = 0; x < sortArr.length; x++) {
         selectorView.appendChild(sortArr[x]);
     }
     saveTasks();
@@ -211,6 +224,7 @@ function init() {
         for (let i = 0; i < TasksOfarr.length; i++) {
             createNewElemt(i, TasksOfarr, selectorView);
         }
+        counterFnc();
     }
     if (localStorage.Performed) {
         let TasksOfarr = JSON.parse(localStorage.getItem("Performed"));
@@ -221,7 +235,6 @@ function init() {
     if (localStorage.image) {
         areaOfList.style.backgroundImage = localStorage.getItem("image");
     }
-
 }
 
 //פעולה שיוצרת אלמנט, פעולת עזר לפעולה הקודמת
