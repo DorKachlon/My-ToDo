@@ -1,5 +1,3 @@
-
-
 //הגדרות משתנים
 const addButton = document.getElementById("addButton");
 const textInput = document.getElementById("textInput");
@@ -29,7 +27,7 @@ textInput.addEventListener("keyup", function (e) {
 function addToDo() {
     let inputValue = textInput.value;
     if (inputValue != "") {
-        textInput.value = '';
+        textInput.value = "";
         const todoContainer = document.createElement("div"); //מסגרת לכל מטלה
         const todoText = document.createElement("div"); //הטקסט של המטלה
         const todoCreatedAt = document.createElement("div"); //הזמן שנרשמה המטלה
@@ -46,14 +44,22 @@ function addToDo() {
         todoText.innerHTML = inputValue;
         todoPriority.innerHTML = prioritySelector.value;
         let d = new Date();
-        todoCreatedAt.innerHTML = `${d.getFullYear()}-${d.getMonth() + 1}-${d.getDate()} ${d.getHours()}:${d.getMinutes()}:${d.getSeconds()}`;
+        todoCreatedAt.innerHTML = `${d.getFullYear()}-${
+            d.getMonth() + 1
+        }-${d.getDate()} ${d.getHours()}:${d.getMinutes()}:${d.getSeconds()}`;
         const deleteIcon = document.createElement("i");
         deleteIcon.className = "fa fa-trash";
         deleteIcon.setAttribute("aria-hidden", "true");
         deleteButton.appendChild(deleteIcon);
         checkBox.setAttribute("type", "checkbox");
 
-        todoContainer.append(todoText, todoCreatedAt, todoPriority, checkBox, deleteButton);
+        todoContainer.append(
+            todoText,
+            todoCreatedAt,
+            todoPriority,
+            checkBox,
+            deleteButton
+        );
         selectorView.appendChild(todoContainer);
 
         deleteButton.onclick = function () {
@@ -61,7 +67,7 @@ function addToDo() {
             selectorView.removeChild(todoContainer);
             counterFnc();
             saveTasks();
-        }
+        };
 
         checkBox.onclick = function () {
             if (checkBox.checked) {
@@ -71,7 +77,7 @@ function addToDo() {
                     selectorPerformed.removeChild(todoContainer);
                     counterFnc();
                     saveTasks();
-                }
+                };
                 counterFnc();
                 saveTasks();
             } else {
@@ -81,15 +87,15 @@ function addToDo() {
                     selectorView.removeChild(todoContainer);
                     counterFnc();
                     saveTasks();
-                }
+                };
                 saveTasks();
                 counterFnc();
             }
-        }
+        };
         saveTasks();
         counterFnc();
     } else {
-        Swal.fire("The text box is empty")
+        Swal.fire("The text box is empty");
     }
     textInput.focus();
     saveTasks();
@@ -112,37 +118,37 @@ undoButton.addEventListener("click", function () {
     }
 });
 
-
 //פעולה שסופרת כמה דיבים יש בתוך הסלקטור וויאו ומדפיסה במקום הרצוי
 function counterFnc() {
-    let divs = selectorView.getElementsByClassName('todoContainer').length;
+    let divs = selectorView.getElementsByClassName("todoContainer").length;
     if (divs === 0) {
         counter.innerHTML = divs;
         counter.style.visibility = "hidden";
         counterContinue.innerHTML = "Nothing to do";
-    }
-    else if (divs === 1) {
+    } else if (divs === 1) {
         counter.innerHTML = divs;
         counter.style.visibility = "visible";
         counterContinue.innerHTML = " task to do";
-
     } else {
         counter.innerHTML = divs;
         counterContinue.innerHTML = " tasks to do";
     }
 }
 
-//זימון הפעולה של המיון בעת לחיצה 
+//זימון הפעולה של המיון בעת לחיצה
 sortButton.addEventListener("click", sortFnc);
-
 
 //פעולת המיון של המטלות על פי עדיפות ותאריך רשימה
 function sortFnc() {
-    let containerArr = selectorView.getElementsByClassName('todoContainer');
+    let containerArr = selectorView.getElementsByClassName("todoContainer");
     let sortArr = [];
     for (let y = 5; y >= 1; y--) {
         for (let i = 0; i < containerArr.length; i++) {
-            if (y.toString() === containerArr[i].getElementsByClassName("todoPriority")[0].innerHTML) {
+            if (
+                y.toString() ===
+                containerArr[i].getElementsByClassName("todoPriority")[0]
+                    .innerHTML
+            ) {
                 sortArr.push(containerArr[i]);
             }
         }
@@ -155,8 +161,6 @@ function sortFnc() {
     }
     saveTasks();
 }
-
-
 
 //זימון פעולת החיפוש
 // searchigBottun.addEventListener("click", searchingFnc);
@@ -171,10 +175,14 @@ function searchingFnc() {
     searchHelp(selectorPerformed, inputValue);
 }
 function searchHelp(selector, inputValue) {
-    let containerArr = selector.getElementsByClassName('todoContainer');
+    let containerArr = selector.getElementsByClassName("todoContainer");
     if (inputValue != "") {
         for (let i = 0; i < containerArr.length; i++) {
-            if (containerArr[i].getElementsByClassName("todoText")[0].innerHTML.search(inputValue) === -1) {
+            if (
+                containerArr[i]
+                    .getElementsByClassName("todoText")[0]
+                    .innerHTML.search(inputValue) === -1
+            ) {
                 containerArr[i].style.opacity = "0.4";
             } else {
                 containerArr[i].style.opacity = "1";
@@ -183,36 +191,48 @@ function searchHelp(selector, inputValue) {
     } else {
         for (let i = 0; i < containerArr.length; i++) {
             containerArr[i].style.opacity = "1";
-
         }
     }
 }
 
-
-// שמירת מידע 
+// שמירת מידע
 function saveTasks() {
     localStorage.clear();
-    let divs = selectorView.getElementsByClassName('todoContainer');
+    let divs = selectorView.getElementsByClassName("todoContainer");
     let TasksOfarr = [];
     for (let i = 0; i < divs.length; i++) {
         let arrTask = [];
         arrTask[0] = divs[i].getElementsByClassName("todoText")[0].innerHTML;
-        arrTask[1] = divs[i].getElementsByClassName("todoCreatedAt")[0].innerHTML;
-        arrTask[2] = divs[i].getElementsByClassName("todoPriority")[0].innerHTML;
+        arrTask[1] = divs[i].getElementsByClassName(
+            "todoCreatedAt"
+        )[0].innerHTML;
+        arrTask[2] = divs[i].getElementsByClassName(
+            "todoPriority"
+        )[0].innerHTML;
         arrTask[3] = divs[i].getElementsByClassName("checkBox")[0].checked;
         TasksOfarr.push(arrTask);
     }
     let JSONReadyArr = JSON.stringify(TasksOfarr);
     localStorage.setItem("tasks", JSONReadyArr);
 
-    let divsPerformed = selectorPerformed.getElementsByClassName('todoContainer');
+    let divsPerformed = selectorPerformed.getElementsByClassName(
+        "todoContainer"
+    );
     let PreformedOfarr = [];
     for (let i = 0; i < divsPerformed.length; i++) {
         let arrTask = [];
-        arrTask[0] = divsPerformed[i].getElementsByClassName("todoText")[0].innerHTML;
-        arrTask[1] = divsPerformed[i].getElementsByClassName("todoCreatedAt")[0].innerHTML;
-        arrTask[2] = divsPerformed[i].getElementsByClassName("todoPriority")[0].innerHTML;
-        arrTask[3] = divsPerformed[i].getElementsByClassName("checkBox")[0].checked;
+        arrTask[0] = divsPerformed[i].getElementsByClassName(
+            "todoText"
+        )[0].innerHTML;
+        arrTask[1] = divsPerformed[i].getElementsByClassName(
+            "todoCreatedAt"
+        )[0].innerHTML;
+        arrTask[2] = divsPerformed[i].getElementsByClassName(
+            "todoPriority"
+        )[0].innerHTML;
+        arrTask[3] = divsPerformed[i].getElementsByClassName(
+            "checkBox"
+        )[0].checked;
         PreformedOfarr.push(arrTask);
     }
     let JSONReadyArrPerformed = JSON.stringify(PreformedOfarr);
@@ -270,7 +290,13 @@ function createNewElemt(i, TasksOfarr, selector) {
     checkBox.setAttribute("type", "checkbox");
     checkBox.checked = TasksOfarr[i][3];
 
-    todoContainer.append(todoText, todoCreatedAt, todoPriority, checkBox, deleteButton);
+    todoContainer.append(
+        todoText,
+        todoCreatedAt,
+        todoPriority,
+        checkBox,
+        deleteButton
+    );
     selector.appendChild(todoContainer);
 
     deleteButton.onclick = function () {
@@ -278,7 +304,7 @@ function createNewElemt(i, TasksOfarr, selector) {
         selector.removeChild(todoContainer);
         counterFnc();
         saveTasks();
-    }
+    };
     checkBox.onclick = function () {
         if (checkBox.checked) {
             selectorPerformed.appendChild(todoContainer);
@@ -287,7 +313,7 @@ function createNewElemt(i, TasksOfarr, selector) {
                 selectorPerformed.removeChild(todoContainer);
                 counterFnc();
                 saveTasks();
-            }
+            };
         } else {
             selectorView.appendChild(todoContainer);
             deleteButton.onclick = function () {
@@ -295,11 +321,12 @@ function createNewElemt(i, TasksOfarr, selector) {
                 selectorView.removeChild(todoContainer);
                 counterFnc();
                 saveTasks();
-            }
+            };
             saveTasks();
         }
+        saveTasks();
         counterFnc();
-    }
+    };
 }
 
 //האירוע והפעולה להחלפת שם הרשימה
@@ -311,14 +338,14 @@ function alertOfName() {
         content: "input",
         buttons: {
             cancel: true,
-            confirm: "Submit"
-        }
-    }).then(val => {
+            confirm: "Submit",
+        },
+    }).then((val) => {
         if (val) {
             swal({
                 title: "Thanks!",
                 text: "You typed: " + val,
-                icon: "success"
+                icon: "success",
             });
             title.innerHTML = val;
             saveTasks();
@@ -330,35 +357,26 @@ function alertOfName() {
 clear.addEventListener("click", alertAndDelete);
 function alertAndDelete() {
     Swal.fire({
-        title: 'Are you sure?',
+        title: "Are you sure?",
         text: "You won't be able to revert this!",
-        icon: 'warning',
+        icon: "warning",
         showCancelButton: true,
-        confirmButtonColor: '#3085d6',
-        cancelButtonColor: '#d33',
-        confirmButtonText: 'Yes, delete it!'
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Yes, delete it!",
     }).then((result) => {
         if (result.value) {
-            Swal.fire(
-                'Deleted!',
-                'Your file has been deleted.',
-                'success'
-            )
+            Swal.fire("Deleted!", "Your file has been deleted.", "success");
             setTimeout(deleteEverything, 900);
         } else {
-            Swal.fire(
-                'Cancelled',
-                'Your imaginary file is safe :)',
-                'error'
-            )
+            Swal.fire("Cancelled", "Your imaginary file is safe :)", "error");
         }
-    })
+    });
 }
 function deleteEverything() {
     localStorage.clear();
     location.reload();
 }
-
 
 //בלחיצה על כפתור זה יפתח הודעה וניתן לשנות תמונה
 imageBackground.addEventListener("click", background);
@@ -369,24 +387,18 @@ function background() {
         content: "input",
         buttons: {
             cancel: true,
-            confirm: "Submit"
-        }
-    }).then(val => {
+            confirm: "Submit",
+        },
+    }).then((val) => {
         if (val) {
             swal({
                 title: "Good luck!",
-                icon: "success"
+                icon: "success",
             });
             areaOfList.style.backgroundImage = `url(${val})`;
             saveTasks();
         } else {
-            Swal.fire(
-                'Cancelled',
-                'Maybe next time :)',
-                'error'
-            )
+            Swal.fire("Cancelled", "Maybe next time :)", "error");
         }
     });
 }
-
-

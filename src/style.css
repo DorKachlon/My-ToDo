@@ -1,19 +1,8 @@
-
-
-/* div>*{
-    display: inline;
-} */
-
-/* #home{
-    height: 100vh;
-    background-color: aqua;
-} */
-
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Poppins', sans-serif;
+    font-family: "Poppins", sans-serif;
 }
 *:focus {
     outline: none;
@@ -30,33 +19,32 @@
     background-size: cover;
 }
 
-#title { 
+#title {
     color: white;
-    grid-area: title; 
+    grid-area: title;
     margin: auto;
     font-size: 5rem;
     text-shadow: 0 0 15px white;
     text-decoration: underline;
-    font-family: 'Raleway', sans-serif;
+    font-family: "Raleway", sans-serif;
     margin-bottom: 0.5em;
     background-color: rgba(190, 190, 190, 0.3);
     padding: 0.2em;
     border-radius: 0.5em;
-    
 }
-#buttonTitle{
+#buttonTitle {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     grid-area: nameOfList;
-    margin: auto; 
+    margin: auto;
 }
 
-#buttonClear{
+#buttonClear {
     grid-area: clear;
-    margin: auto; 
+    margin: auto;
 }
-#nameOfList { 
+#nameOfList {
     color: #ffffff;
     background-color: transparent;
     line-height: 120%;
@@ -67,10 +55,10 @@
     margin-bottom: 0.5em;
 }
 #nameOfList:hover {
-color: white;
-background-color: rgba(255, 255, 255, 0.3);
-} 
-#imageBackground { 
+    color: white;
+    background-color: rgba(255, 255, 255, 0.3);
+}
+#imageBackground {
     color: #ffffff;
     background-color: transparent;
     line-height: 120%;
@@ -81,10 +69,10 @@ background-color: rgba(255, 255, 255, 0.3);
     font-size: 1.2em;
 }
 #imageBackground:hover {
-color: white;
-background-color: rgba(255, 255, 255, 0.3);
-} 
-#clear { 
+    color: white;
+    background-color: rgba(255, 255, 255, 0.3);
+}
+#clear {
     color: #ffffff;
     background-color: transparent;
     line-height: 120%;
@@ -94,24 +82,21 @@ background-color: rgba(255, 255, 255, 0.3);
     transition: background-color ease 400ms;
 }
 #clear:hover {
-color: white;
-background-color: rgba(255, 255, 255, 0.3);
-} 
+    color: white;
+    background-color: rgba(255, 255, 255, 0.3);
+}
 
-#control { 
-    grid-area: control; 
+#control {
+    grid-area: control;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
-    grid-template-rows: 1.5fr 1fr  1fr;
+    grid-template-rows: 1.5fr 1fr 1fr;
     gap: 1px 1px;
-    grid-template-areas: ". text text text text text ." ". . . counter . . ."  ". . other other other . .";
+    grid-template-areas: ". text text text text text ." ". . . counter . . ." ". . other other other . .";
     justify-content: center;
     align-items: center;
-    
-
-
 }
-#two{
+#two {
     grid-area: counter;
     display: flex;
     justify-content: center;
@@ -121,14 +106,14 @@ background-color: rgba(255, 255, 255, 0.3);
     border-radius: 5em;
     width: 15em;
 }
-#counter{
+#counter {
     color: cornsilk;
 }
-#counterContinue{
+#counterContinue {
     color: cornsilk;
     margin-left: 0.5em;
 }
-#one{
+#one {
     grid-area: text;
     display: flex;
     /* background-color: rgba(255, 255, 255, 0.3); */
@@ -138,32 +123,27 @@ background-color: rgba(255, 255, 255, 0.3);
     animation-duration: 10s;
     animation-iteration-count: infinite;
     animation-fill-mode: forwards;
-    
 }
 
-@keyframes rainbow{
-    0%{
+@keyframes rainbow {
+    0% {
         background-color: rgba(122, 131, 255, 0.4);
-        
     }
-    25%{
+    25% {
         background-color: rgba(122, 255, 122, 0.4);
     }
-    50%{
+    50% {
         background-color: rgba(253, 255, 122, 0.4);
     }
-    75%{
+    75% {
         background-color: rgba(190, 190, 190, 0.4);
     }
-    100%{
+    100% {
         background-color: rgba(122, 131, 255, 0.4);
     }
-
 }
 
-
-
-#textInput{ 
+#textInput {
     background-color: rgba(255, 255, 255, 0.7);
     padding: 10px 12px;
     border-radius: 3em;
@@ -177,18 +157,17 @@ background-color: rgba(255, 255, 255, 0.3);
 #textInput:hover {
     background-color: white;
     color: black;
-    } 
-#textInput::placeholder{
+}
+#textInput::placeholder {
     color: black;
     text-align: center;
+}
+#textInput:focus {
+    color: black;
+    background-color: white;
+}
 
-    }
-    #textInput:focus{
-        color: black;
-        background-color: white;
-        }
-
-#prioritySelector{
+#prioritySelector {
     background-color: rgba(255, 255, 255, 0.7);
     padding: 10px 12px;
     border-radius: 10px;
@@ -199,31 +178,29 @@ background-color: rgba(255, 255, 255, 0.3);
 }
 #prioritySelector:hover {
     background-color: white;
-    } 
-#addButton{
+}
+#addButton {
     background-color: rgba(63, 191, 63, 0.84);
     font-size: 1em;
     color: honeydew;
     text-align: center;
     padding: 1em 2em;
-    border-radius: 50%;   
+    border-radius: 50%;
     transition: all ease 400ms;
 }
 #addButton:hover {
     background-color: rgb(40, 229, 40);
     color: black;
-    } 
-#three{
+}
+#three {
     grid-area: other;
     display: flex;
     justify-content: space-around;
     align-items: center;
     background-color: rgba(255, 102, 102, 0.418);
     border-radius: 5em;
-
-    
 }
-#undoButton{
+#undoButton {
     background-color: rgba(255, 255, 255, 0.3);
     font-size: 1.5em;
     color: honeydew;
@@ -233,28 +210,27 @@ background-color: rgba(255, 255, 255, 0.3);
     border-radius: 50%;
     margin-right: 5px;
     transition: all ease 400ms;
-    
 }
 #undoButton:hover {
     background-color: rgba(255, 255, 255, 0.7);
-    } 
-#sortButton{
+}
+#sortButton {
     background-color: rgba(255, 255, 255, 0.3);
     font-size: 1.5em;
     color: honeydew;
     text-align: center;
     border: 1px solid #ffffff;
     padding: 0.2em 1em;
-    border-radius: 50%;  
-    margin-right: 5px; 
+    border-radius: 50%;
+    margin-right: 5px;
     order: 1;
     transition: all ease 400ms;
 }
 #sortButton:hover {
     background-color: rgba(255, 255, 255, 0.7);
-    } 
+}
 
-#searchInput{
+#searchInput {
     background-color: rgba(255, 255, 255, 0.3);
     border: 1px solid #ffffff;
     padding: 10px 12px;
@@ -266,31 +242,30 @@ background-color: rgba(255, 255, 255, 0.3);
 }
 #searchInput:hover {
     background-color: rgba(255, 255, 255, 0.7);
-    } 
-#searchInput::placeholder{
-color: white;
+}
+#searchInput::placeholder {
+    color: white;
 }
 #searchInput:focus {
     background-color: rgba(255, 255, 255, 0.7);
     color: black;
-    } 
+}
 
-
-#view { 
-    grid-area: view; 
+#view {
+    grid-area: view;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
 }
 
-#Performed { 
-    grid-area: performed; 
+#Performed {
+    grid-area: performed;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
 }
 
-.todoContainer{
+.todoContainer {
     display: flex;
     justify-content: space-around;
     align-items: center;
@@ -302,24 +277,23 @@ color: white;
     height: 3em;
     transition: all ease 600ms;
 }
-.todoText{
+.todoText {
     flex: 5;
     text-align: center;
     font-weight: bold;
 }
-.todoCreatedAt{
+.todoCreatedAt {
     flex: 2;
 }
-.todoPriority{
+.todoPriority {
     flex: 0.6 0 3px;
 }
-.checkBox{
+.checkBox {
     flex: 0.1 0 1px;
     order: -1;
     transition: all ease 400ms;
-
 }
-.deleteButton{
+.deleteButton {
     font-size: 1.5em;
     padding: 0.2em 0.5em;
     background-color: transparent;
@@ -329,34 +303,32 @@ color: white;
     flex: 0.2 0 3px;
     transition: all ease 400ms;
 }
-.deleteButton:hover{
+.deleteButton:hover {
     background-color: rgba(236, 23, 23, 0.78);
     color: white;
     cursor: pointer;
 }
 
-input[type=checkbox]{
+input[type="checkbox"] {
     background-color: transparent;
     transform: scale(3);
     border-radius: 50%;
     cursor: pointer;
     transition: all ease 400ms;
-
 }
 
-#Performed>div{
+#Performed > div {
     background-color: rgba(175, 175, 175, 0.78);
     text-decoration: line-through;
 }
-#view>div:hover{
+#view > div:hover {
     background-color: rgba(255, 221, 128, 0.78);
     transform: scale(1.003);
     transition: all ease 800ms;
 }
-#Performed>div:hover{
+#Performed > div:hover {
     background-color: rgba(107, 107, 107, 0.78);
     text-decoration: line-through;
     transform: scale(1.003);
     transition: all ease 800ms;
 }
-
