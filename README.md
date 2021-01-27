@@ -8,7 +8,6 @@
 
 ## link for google drive
 
-[My video link.](https://drive.google.com/file/d/1nmoPUsKpZQhZdeVgn1lZ-uP6EvLWzJw4/view?usp=sharing)
 
 ## which bonus i did?
 
